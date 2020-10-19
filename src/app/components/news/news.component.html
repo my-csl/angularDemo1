@@ -1,0 +1,7 @@
+<app-header #header [title]="title" [run]="run" (outer)="getO($event)"></app-header>
+
+
+<h3>这是news的内容----父组件</h3>
+<button (click)="run($event)">点击获取子组件的数据</button>
+
+

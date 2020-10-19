@@ -1,0 +1,81 @@
+<p *ngFor="let i of [0,0,0,0]">aaaa</p>
+
+<hr>
+
+<h2 [title]="tips">属性绑定</h2>
+
+<hr>
+
+<!--循环-->
+<h2>for循环</h2>
+<ul>
+  <li *ngFor="let i of arr">
+    {{i.pinpai}}
+    <ul>
+      <li *ngFor="let j of i.item">
+        {{j.price}}----{{j.title}}
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<hr>
+
+<h2>if判断</h2>
+<p *ngIf="flag" style="color: red">if语句为true文字为红色</p>
+<p *ngIf="!flag" style="color: yellow">if语句为false文字为黄色</p>
+
+<hr>
+
+<!--switch语句-->
+<h2>switch分支语句</h2>
+<span [ngSwitch]="num">
+  <p *ngSwitchCase="0">未支付</p>
+  <p *ngSwitchCase="1">已支付</p>
+  <p *ngSwitchDefault>错误</p>
+</span>
+
+<!--class-->
+<h2>设置class</h2>
+<p [ngClass]="{'blue':true,'red':true}">cc</p>
+<!--style-->
+<p [ngStyle]="{'color':'yellow'}">cc</p>
+
+<h2>利用管道初始化日期时间格式</h2>
+<p>{{today}}</p>
+<p>{{today | date:"yyyy-MM-dd HH:mm ss"}}</p>
+
+
+<p>键盘事件</p>
+<input type="text" (keyup)="keyUp($event)">
+
+<p>MVVM双向数据绑定</p>
+<input type="text" [(ngModel)]="msg">
+{{msg}}
+
+<button (click)="getDate()">获取值</button>
+<button (click)="setDate()">改变值</button>
+
+<h2>mvvm双向数据绑定案列</h2>
+姓名：<input type="text" [(ngModel)]="pageInfo.username"><br>
+性别：<input type="radio" value="1" id="sex1" name="cc" [(ngModel)]="pageInfo.sex">男<label for="sex1"></label>
+      <input name="cc" value="2" type="radio" id="sex2" [(ngModel)]="pageInfo.sex"><label for="sex2"></label>女
+<br>
+<select [(ngModel)]="pageInfo.city">
+  <option [value]="item" *ngFor="let item of pageInfo.cityList">{{item}}</option>
+</select>
+<br>
+爱好：<span *ngFor="let item of pageInfo.hobby">
+        <input type="checkbox" [(ngModel)]="item.checked"><span>{{item.title}}</span>
+    </span>
+
+<br>
+备注：<textarea [(ngModel)]="pageInfo.mark"></textarea>
+
+<button (click)="getInfo()">获取数据</button>
+<pre>
+  {{pageInfo | json}}
+</pre>
+
+<br><br><br>
+<app-search #search></app-search>

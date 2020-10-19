@@ -1,0 +1,30 @@
+<h2>搜索缓存数据功能</h2>
+<input type="text" [(ngModel)]="keyword"><button (click)="doSearch()">搜索</button>
+<ul>
+  <li *ngFor="let item of list;let index=index">{{item}}<button (click)="doDelete(index)">x</button></li>
+</ul>
+<br><br><br>
+
+<h2>toList待办事项</h2>
+<input type="text" [(ngModel)]="enterWord" (keyup)="toDoList($event)">
+
+<h2>待办事项</h2>
+<ul>
+  <div *ngFor="let item of enterList;let index = index">
+    <ng-container *ngIf="item.status == 0">
+      <input type="checkbox" [(ngModel)]="item.status" (click)="wancheng(index)">{{item.title}}
+    </ng-container>
+  </div>
+</ul>
+
+<h2>已完成事项</h2>
+<ul>
+  <div *ngFor="let item of enterList;let index = index">
+    <ng-container *ngIf="item.status == 1">
+      <input type="checkbox" [(ngModel)]="item.status" (click)="wancheng(index)">{{item.title}}
+    </ng-container>
+  </div>
+</ul>
+
+<h2>用ViewChild操作dom元素和子组件</h2>
+<div class="vc" #vc>ag操作dom</div>
